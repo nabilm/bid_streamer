@@ -1,24 +1,23 @@
-## A Demonstration of using FastAPI, Kafka , Faust (streaming lib.) and mongoDB
+## A Demonstration of using FastAPI, Kafka , Faust and mongoDB
 *A hope to aid some people who are new to those services and how to integrate them*
 
-The solution consists of 5 microservices 
+The integration consists of 5 microservices 
 
 
 ##Services
 ### Kakfa microservice 
-which is a docker container that can be ready for production ( deploying on ECS for instance ) where we will send our bid events
+which is a docker container that can be ready for production ( deploying on ECS for example ) where we will send our bid events
 
 ### Zookeeper
+The needed service for kafka to work
 
 ### MongoDB
 which is our app database
 
 ### bidder-api
-
 see (bidder/README.md)
 
 ### bidder-streamer
-
 see (bidder/README.md)
 
 
@@ -52,17 +51,22 @@ This will display an interface which contain all info about the API and a way to
 make test
 open http://localhost:8089
 ```
-You can hatch using number of simulate 2 and hatch rate of 1 to warm 
+You can hatch using number of simulate 2 and hatch rate of 1 to warm up
 and then you can navigate to the stats of the tasks
 
 `explore the data` you can use a client like https://robomongo.org/ which really good mongo client , mongo is exposed on mongodb://localhost:27017
 
 
 ## Requirements
-All you need is docker >=2.1.0.2
-docker-compose >= 1.24.1
-python 3.8
+All you need is 
+
+- docker >=2.1.0.2
+- docker-compose >= 1.24.1
+- python 3.8
 
 ## Big thanks 
 big thanks to https://github.com/wurstmeister/kafka-docker for the amazing work on kafka docker which i used in this example
 
+## TODO 
+- Unit tests to cover the code (pytest is in the requirements and now locust test are available)
+- Use TDD in future work as it's proven to be really useful and faster in getting the big picture
