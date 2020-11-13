@@ -56,6 +56,10 @@ and then you can navigate to the stats of the tasks
 
 `explore the data` you can use a client like https://robomongo.org/ which really good mongo client , mongo is exposed on mongodb://localhost:27017
 
+## Tear down the services
+```bash
+make clearenv
+```
 
 ## Requirements
 All you need is 
