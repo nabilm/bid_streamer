@@ -75,4 +75,6 @@ big thanks to https://github.com/wurstmeister/kafka-docker for the amazing work 
 - Unit tests to cover the code (pytest is in the requirements and now locust test are available)
 - Use TDD in future work as it's proven to be really useful and faster in getting the big picture
 - Instead of pin kafka-docker in the code use it as a vendor 
-- Decouple the compoents so that APIs can be ignostic about the backends used
+- Decouple the compoents so that APIs can be agnostic about the backends used
+- User poetry
+- Optimize the streamer internal memory storage
