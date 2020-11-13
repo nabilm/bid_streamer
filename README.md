@@ -4,7 +4,7 @@
 The integration consists of 5 microservices 
 
 
-##Services
+## Services
 ### Kakfa microservice 
 which is a docker container that can be ready for production ( deploying on ECS for example ) where we will send our bid events
 
@@ -21,14 +21,14 @@ see (bidder/README.md)
 see (bidder/README.md)
 
 
-##How it works
+## How it works
 - Creating users , items, events can be done through the API endpoints 
 - Events are written to kafka topic
 - Streamer process events from kafka topic and send it to mongodb for storage
 - API connect to mongodb and query the data from users, items and events collection
 
 
-##Flow
+## Flow
 - Create a user 
 - Create an item with an initial bid
 - Create an event that has the user id and the item id created along with a bid value
