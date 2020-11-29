@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# Made to wait from kafka and make sure fault is already ran
 set -e
 
 cmd="$@"

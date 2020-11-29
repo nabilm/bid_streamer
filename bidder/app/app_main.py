@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from .routers import items, users, events
+from .http import items, users, events
 
 app = FastAPI()
 

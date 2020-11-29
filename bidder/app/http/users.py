@@ -1,25 +1,18 @@
 from datetime import datetime
 import uuid
 from fastapi import APIRouter
-
 from app.models import User
-from app.backends.mongo import MongoClient
-from app.settings import (
-    MONGODB_DSN,
-    MONGODB_STORAGE,
-    USERS_COLLECTION,
-    EVENTS_COLLECTION,
-)
+from app.service.user import UserService
 
 router = APIRouter()
-mongo_client = MongoClient(MONGODB_DSN, MONGODB_STORAGE)
+user_service = UserService()
 
 
 @router.get("/users/", tags=["users"])
 async def read_users():
     # This one should support pagination
     # But for simplicity it will return without pagination
-    result = await mongo_client.do_find(USERS_COLLECTION, {})
+    result = await user_service.read_users()
     return result
 
 
@@ -34,19 +27,19 @@ async def create_user(user: User):
     """
     user.id = str(uuid.uuid4())
     user.created_date = datetime.now()
-    await mongo_client.do_insert_one(USERS_COLLECTION, user.dict())
-    return user.dict()
+    result = await user_service.create(user)
+    return result
 
 
 @router.get("/users/{user_id}", tags=["users"])
 async def read_user(user_id: str):
     """ Return a user by user id """
-    result = await mongo_client.do_find_one(USERS_COLLECTION, {"id": user_id})
+    result = await user_service.read_user(user_id)
     return result
 
 
 @router.get("/users/items/{user_id}", tags=["users"])
 async def get_user_items(user_id: str):
     """ Return the items at which the users did bid on """
-    result = await mongo_client.do_find_one(EVENTS_COLLECTION, {"user_id": user_id})
+    result = await user_service.get_user_items(user_id)
     return result
